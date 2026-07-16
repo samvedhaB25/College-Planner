@@ -1,6 +1,6 @@
 export default function Navbar() {
     return (
-        <nav className="flex justify-between bg-indigo-50 items-center px-8 py-4">
+        <nav className="flex justify-between w-full items-center px-8 py-4">
             <h2 className="py-4 px-2 text-4xl font-sans text-sky-600"
                 style={{ fontFamily: "Merriweather, sans-serif" }}>
                 College Planner

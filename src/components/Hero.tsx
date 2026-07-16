@@ -1,14 +1,21 @@
 export default function Hero() {
     return (
-        <section>
-            <h1>Plan Your College Journey</h1>
+        <section className="min-h-screen flex flex-col items-center justify-center text-center">
+            <div style={{ fontFamily: "Poppins, sans-serif" }}>
+                <h2 className="text-6xl font-semibold">
+                    Plan Your College Journey
+                </h2>
 
-            <p>
-                Organize applications, essays, scholarships, and deadlines.
-            </p>
+                <p className="text-lg mt-6 text-gray-600">
+                    Organize applications, essays, scholarships, and deadlines.
+                </p>
+            </div>
 
-            <button>Get Started</button>
-            <button>Learn More</button>
+            <div className="mt-8 space-x-4">
+                <button className="px-8 py-3 rounded-full bg-emerald-300">
+                    Get Started
+                </button>
+            </div>
         </section>
     );
 }
