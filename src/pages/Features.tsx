@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Navbar from '../components/Navbar';
 import FeatureCard from "../components/FeatureCard";
 
@@ -11,11 +13,13 @@ function Features() {
             </h1>
 
             <div className="flex flex-wrap justify-center gap-8">
-                <FeatureCard
-                    icon="📋"
-                    title="Colleges"
-                    description="Keep track of where you're applying."
-                />
+                <Link to="/colleges">
+                    <FeatureCard
+                        icon="📋"
+                        title="Colleges"
+                        description="Keep track of where you're applying."
+                    />
+                </Link>
 
                 <FeatureCard
                     icon="📔"
@@ -23,11 +27,13 @@ function Features() {
                     description="Your personal statement and supplemental essays in one place!"
                 />
 
-                <FeatureCard
-                    icon="📆"
-                    title="Calendar"
-                    description="Let's you see what you need to do on a weekly & monthly basis."
-                />
+                <Link to="/calendar">
+                    <FeatureCard
+                        icon="📆"
+                        title="Calendar"
+                        description="Let's you see what you need to do on a weekly & monthly basis."
+                    />
+                </Link>
 
             </div>
 
