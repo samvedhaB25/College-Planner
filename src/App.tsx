@@ -5,6 +5,7 @@ import Features from './pages/Features'
 import About from './pages/About'
 import Calendar from './pages/Calendar'
 import Colleges from './pages/Colleges'
+import CollegePage from './pages/CollegePage'
 import './App.css'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/colleges" element={<Colleges />} />
+        <Route path="/colleges/:id" element={<CollegePage />} />
       </Routes>
     </BrowserRouter>
   );

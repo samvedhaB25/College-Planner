@@ -1,22 +1,13 @@
 import Navbar from '../components/Navbar';
 import CollegeCard from '../components/CollegeCard';
 
+import {
+    safetyColleges,
+    targetColleges,
+    reachColleges
+} from "../data";
+
 export default function Colleges() {
-    const safetyColleges = [
-        { id: 1, name: "University of Oregon", progress: "complete" },
-        { id: 2, name: "University of Arizona", progress: "in-progress" }
-    ];
-
-    const targetColleges = [
-        { id: 3, name:"University of Washington Seattle", progress: "not started"},
-        { id: 4, name:"Purdue University", progress: "in-progress"}
-    ];
-
-    const reachColleges = [
-        { id: 5, name: "Stanford University", progress: "complete"},
-        { id: 6, name: "University of Virginia", progress: "not started"}
-    ]
-
     return(
         <div>
             <Navbar />
