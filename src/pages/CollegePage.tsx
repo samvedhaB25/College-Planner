@@ -23,10 +23,28 @@ export default function CollegePage() {
     return (
         <div>
             <Navbar />
+            
+            <h1 className="px-3 py-5 text-5xl font-semibold text-blue-950"> 
+                {college.name} 
+            </h1>
 
-            <h1> {college.name} </h1>
+            <div className="px-3 flex items-center gap-3">
 
-            <p>Progress: {college.progress}</p>
+                <span className={`inline-block px-4 py-1 rounded-full text-sm font-medium ${
+                    college.progress === "complete"
+                        ? "bg-green-100 text-green-700"
+                        : college.progress === "in-progress"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-red-100 text-red-700"
+                    }`}
+                >
+                {college.progress === "in-progress"
+                    ? "In Progress"
+                    : college.progress === "not-started"
+                    ? "Not Started"
+                    : "Complete"}
+                </span>
+            </div>
 
         </div>
 
