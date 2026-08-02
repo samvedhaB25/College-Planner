@@ -24,7 +24,8 @@ export default function CollegePage() {
         <div>
             <Navbar />
             
-            <h1 className="px-3 py-5 text-5xl font-semibold text-blue-950"> 
+            <h1 className="px-3 py-5 text-5xl font-semibold text-blue-950 italic"
+                style={{ fontFamily: "Crimson Text, sans-serif" }}> 
                 {college.name} 
             </h1>
 
@@ -44,7 +45,32 @@ export default function CollegePage() {
                     ? "Not Started"
                     : "Complete"}
                 </span>
+
+                <span className="inline-block w-fit px-4 py-1 rounded-full text-sm font-medium border bg-gray-100 text-gray-700 border-gray-200">
+                    Deadline: {college.deadline}
+                </span>
+
             </div>
+
+            <div className="mt-6 flex flex-col items-center">
+                <div className="w-36 h-36 rounded-full bg-blue-100 border-4 border-blue-200 flex flex-col items-center justify-center">
+                    <p className="text-4xl font-bold text-blue-700">
+                        {college.acceptRate}
+                    </p>
+
+                </div>
+
+                <div className="mt-4 space-y-1 text-center">
+                    <p className="text-gray-700">
+                        In-State: <span className="font-semibold">{college.iSAcceptRate}</span>
+                    </p>
+
+                    <p className="text-gray-700">
+                        Out-of-State: <span className="font-semibold">{college.oSAcceptRate}</span>
+                    </p>
+                </div>
+            </div>
+
 
         </div>
 
