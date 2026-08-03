@@ -2,6 +2,10 @@ import { useParams } from "react-router-dom";
 import { safetyColleges, targetColleges, reachColleges } from "../data";
 
 import Navbar from '../components/Navbar';
+import AcceptanceCard from '../components/AcceptanceCard';
+import SupplementalEssaysCard from '../components/SupplementalEssaysCard';
+import NotesCard from '../components/NotesCard';
+import OtherInfoCard from '../components/OtherInfoCard'
 
 export default function CollegePage() {
     const { id } = useParams();
@@ -31,6 +35,7 @@ export default function CollegePage() {
 
             <div className="px-3 flex items-center gap-3">
 
+
                 <span className={`inline-block px-4 py-1 rounded-full text-sm font-medium ${
                     college.progress === "complete"
                         ? "bg-green-100 text-green-700"
@@ -39,38 +44,72 @@ export default function CollegePage() {
                         : "bg-red-100 text-red-700"
                     }`}
                 >
-                {college.progress === "in-progress"
-                    ? "In Progress"
-                    : college.progress === "not-started"
-                    ? "Not Started"
-                    : "Complete"}
+                    {college.progress === "in-progress"
+                        ? "In Progress"
+                        : college.progress === "not-started"
+                        ? "Not Started"
+                        : "Complete"}
                 </span>
+
 
                 <span className="inline-block w-fit px-4 py-1 rounded-full text-sm font-medium border bg-gray-100 text-gray-700 border-gray-200">
                     Deadline: {college.deadline}
                 </span>
 
+
             </div>
 
-            <div className="mt-6 flex flex-col items-center">
-                <div className="w-36 h-36 rounded-full bg-blue-100 border-4 border-blue-200 flex flex-col items-center justify-center">
-                    <p className="text-4xl font-bold text-blue-700">
-                        {college.acceptRate}
-                    </p>
+
+            <div className="mt-8 px-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                {/* Left Column */}
+                <div className="space-y-6">
+
+                    {/* Acceptance Rate */}
+                    <div className="flex flex-col items-start">
+
+                        <div className="w-36 h-36 rounded-full bg-blue-100 border-4 border-blue-200 flex flex-col items-center justify-center">
+                            <p className="text-4xl font-bold text-blue-700">
+                                {college.acceptRate}
+                            </p>
+                        </div>
+
+                        <div className="mt-4 space-y-1">
+
+                            <p className="text-gray-700">
+                                In-State:{" "}
+                                <span className="font-semibold">
+                                    {college.iSAcceptRate}
+                                </span>
+                            </p>
+
+                            <p className="text-gray-700">
+                                Out-of-State:{" "}
+                                <span className="font-semibold">
+                                    {college.oSAcceptRate}
+                                </span>
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    {/* Other Information */}
+                    <OtherInfoCard />
 
                 </div>
 
-                <div className="mt-4 space-y-1 text-center">
-                    <p className="text-gray-700">
-                        In-State: <span className="font-semibold">{college.iSAcceptRate}</span>
-                    </p>
 
-                    <p className="text-gray-700">
-                        Out-of-State: <span className="font-semibold">{college.oSAcceptRate}</span>
-                    </p>
+                {/* Right Column */}
+                <div className="lg:col-span-2 grid grid-cols-1 gap-6">
+
+                    <SupplementalEssaysCard />
+
+                    <NotesCard />
+
                 </div>
-            </div>
 
+            </div>
 
         </div>
 
