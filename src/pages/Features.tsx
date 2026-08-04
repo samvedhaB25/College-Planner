@@ -21,11 +21,13 @@ function Features() {
                     />
                 </Link>
 
-                <FeatureCard
-                    icon="📔"
-                    title="Essay Tracker"
-                    description="Your personal statement and supplemental essays in one place!"
-                />
+                <Link to="/essays">
+                    <FeatureCard
+                        icon="📔"
+                        title="Essay Tracker"
+                        description="Your personal statement and supplemental essays in one place!"
+                    />
+                </Link>
 
                 <Link to="/calendar">
                     <FeatureCard

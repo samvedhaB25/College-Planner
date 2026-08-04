@@ -6,6 +6,7 @@ import About from './pages/About'
 import Calendar from './pages/Calendar'
 import Colleges from './pages/Colleges'
 import CollegePage from './pages/CollegePage'
+import Essays from './pages/Essays'
 import './App.css'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/colleges" element={<Colleges />} />
         <Route path="/colleges/:id" element={<CollegePage />} />
+        <Route path="/essays" element={<Essays />} />
       </Routes>
     </BrowserRouter>
   );
