@@ -15,6 +15,24 @@ export default function Calendar() {
 
     const year = currentDate.getFullYear();
 
+    const previousMonth = () => {
+        setCurrentDate(
+            new Date(
+                currentDate.getFullYear(),
+                currentDate.getMonth() - 1
+            )
+        );
+    };
+
+    const nextMonth = () => {
+        setCurrentDate(
+            new Date(
+                currentDate.getFullYear(),
+                currentDate.getMonth() + 1
+            )
+        );
+    };
+
     return (
         <div>
             <Navbar />
@@ -27,6 +45,8 @@ export default function Calendar() {
                 <CalendarHeader
                     month={monthName}
                     year={year}
+                    previousMonth={previousMonth}
+                    nextMonth={nextMonth}
                 />
 
                 <CalendarGrid />
