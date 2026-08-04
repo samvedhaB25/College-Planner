@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { safetyColleges, targetColleges, reachColleges } from "../data";
 
 import Navbar from '../components/Navbar';
-import AcceptanceCard from '../components/AcceptanceCard';
 import SupplementalEssaysCard from '../components/SupplementalEssaysCard';
 import NotesCard from '../components/NotesCard';
 import OtherInfoCard from '../components/OtherInfoCard'

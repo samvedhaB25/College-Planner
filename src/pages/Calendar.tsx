@@ -5,8 +5,6 @@ import CalendarHeader from '../components/Calendar/CalendarHeader';
 import CalendarGrid from '../components/Calendar/CalendarGrid';
 
 export default function Calendar() {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", ];
-
     const [currentDate, setCurrentDate] = useState(new Date());
 
     const monthName = currentDate.toLocaleString("default", {
@@ -49,7 +47,7 @@ export default function Calendar() {
                     nextMonth={nextMonth}
                 />
 
-                <CalendarGrid />
+                <CalendarGrid currentDate={currentDate}/>
 
             </div>
 

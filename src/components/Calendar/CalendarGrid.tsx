@@ -1,6 +1,12 @@
 import CalendarCell from "./CalendarCell";
 
-export default function CalendarGrid() {
+interface CalendarGridProps {
+    currentDate: Date;
+}
+
+export default function CalendarGrid({
+    currentDate,
+}: CalendarGridProps) {
     const weekdays = [
         "Sun",
         "Mon",
@@ -11,9 +17,35 @@ export default function CalendarGrid() {
         "Sat",
     ];
 
-    const days = [
-        null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
-    ];
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+
+    // JavaScript trick to calculating the number of days in a month.
+    const daysInMonth = new Date(
+        year,
+        month + 1,
+        0
+    ).getDate();
+
+    const firstDay = new Date(
+        year,
+        month,
+        1
+    ).getDay();
+
+    const days: (number | null)[] = [];
+
+    for (let i = 0; i < firstDay; i++) {
+        days.push(null);
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+        days.push(day);
+    }
+
+    while (days.length < 42) {
+        days.push(null);
+    }
 
     return (
         <div>
