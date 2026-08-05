@@ -9,7 +9,7 @@ import CollegePage from './pages/CollegePage'
 import Essays from './pages/Essays'
 import './App.css'
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <Routes>
@@ -24,5 +24,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App
