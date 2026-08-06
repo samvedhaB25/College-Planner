@@ -1,3 +1,5 @@
+import CollegeEssayCard from "./CollegeEssayCard";
+
 export default function SupplementalCard() {
     return (
         <div>
@@ -5,7 +7,7 @@ export default function SupplementalCard() {
                 Supplemental Essays
             </h2>
 
-            
+            <CollegeEssayCard />
 
         </div>
 
