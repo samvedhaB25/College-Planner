@@ -2,6 +2,8 @@ import Navbar from '../components/Navbar';
 import PersonalStatementCard from '../components/Essays/PersonalStatementCard';
 import SupplementalCard from '../components/Essays/SupplementalCard';
 
+import { allColleges, essays } from '../data';
+
 export default function Essays() {
     return (
         <div>
@@ -20,7 +22,10 @@ export default function Essays() {
                 </div>
 
                 <div className="col-span-2 bg-white rounded-xl shadow p-6">
-                    <SupplementalCard />
+                    <SupplementalCard
+                        colleges={allColleges}
+                        essays={essays}
+                    />
                 </div>
 
             </div>
