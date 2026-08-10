@@ -21,8 +21,11 @@ export default function Navbar() {
                 
             </ul>
 
-            <button className="text-gray px-4 py-2 rounded-lg text-white hover:text-green-600"
-                    style={{ fontFamily: "Poppins, sans-serif" }}>
+            <button 
+                className="text-gray px-4 py-2 rounded-lg text-white hover:text-green-600"
+                style={{ fontFamily: "Poppins, sans-serif" }}
+                onClick={() => window.location.href = "http://localhost:8080/oauth2/authorization/cognito"}
+            >
                 Login/Sign-up
             </button>
 
