@@ -57,6 +57,12 @@
     		<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
+		<dependency>
+    		<groupId>me.paulschwarz</groupId>
+    		<artifactId>springboot4-dotenv</artifactId>
+    		<version>5.0.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

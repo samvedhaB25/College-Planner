@@ -1,5 +1,6 @@
 package com.collegeplanner.college_planner_backend;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -15,22 +16,29 @@ import java.util.Map;
 public class UserController {
 
     @GetMapping("/me")
-    public ResponseEntity<?> getCurrentUser(@AuthenticationPrincipal OAuth2User principal) {
-        if (principal == null) {
-            return ResponseEntity.status(401).build();
-        }
-
-        Map<String, Object> userInfo = new HashMap<>();
-        // Cognito can expose the username under different claim names
-        // depending on your user pool config — check which one applies
-        // by hitting /api/user/me directly and inspecting the JSON.
-        Object username = principal.getAttribute("username");
-        if (username == null) {
-            username = principal.getAttribute("cognito:username");
-        }
-        userInfo.put("username", username);
-        userInfo.put("email", principal.getAttribute("email"));
-
-        return ResponseEntity.ok(userInfo);
+public ResponseEntity<?> getCurrentUser(@AuthenticationPrincipal OAuth2User principal) {
+    if (principal == null) {
+        return ResponseEntity.status(401).build();
     }
+
+    Map<String, Object> userInfo = new HashMap<>();
+    // "name" is typically the Google display name; "email" is always present
+    Object displayName = principal.getAttribute("name");
+    if (displayName == null) {
+        displayName = principal.getAttribute("email");
+    }
+    userInfo.put("username", displayName);
+    userInfo.put("email", principal.getAttribute("email"));
+
+    return ResponseEntity.ok(userInfo);
+}
+
+    @Value("${spring.security.oauth2.client.registration.cognito.client-secret:NOT_SET}")
+private String debugSecret;
+
+@GetMapping("/api/debug/secret-check")
+public String checkSecret() {
+    if (debugSecret.equals("NOT_SET")) return "Property not resolved at all";
+    return "Secret length: " + debugSecret.length() + ", starts with: " + debugSecret.substring(0, Math.min(4, debugSecret.length()));
+}
 }
