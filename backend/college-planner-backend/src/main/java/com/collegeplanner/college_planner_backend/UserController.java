@@ -33,12 +33,4 @@ public ResponseEntity<?> getCurrentUser(@AuthenticationPrincipal OAuth2User prin
     return ResponseEntity.ok(userInfo);
 }
 
-    @Value("${spring.security.oauth2.client.registration.cognito.client-secret:NOT_SET}")
-private String debugSecret;
-
-@GetMapping("/api/debug/secret-check")
-public String checkSecret() {
-    if (debugSecret.equals("NOT_SET")) return "Property not resolved at all";
-    return "Secret length: " + debugSecret.length() + ", starts with: " + debugSecret.substring(0, Math.min(4, debugSecret.length()));
-}
 }

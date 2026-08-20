@@ -7,6 +7,7 @@ import Calendar from './pages/Calendar'
 import Colleges from './pages/Colleges'
 import CollegePage from './pages/CollegePage'
 import Essays from './pages/Essays'
+import Login from './pages/Login'
 import { AuthProvider } from './context/AuthContext'
 import './App.css'
 
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/colleges" element={<Colleges />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/colleges/:id" element={<CollegePage />} />
         <Route path="/essays" element={<Essays />} />
       </Routes>

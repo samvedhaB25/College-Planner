@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { safetyColleges, targetColleges, reachColleges } from "../data";
+import { safetyColleges, targetColleges, reachColleges } from "../data/data";
 
 import Navbar from '../components/Navbar';
 import SupplementalEssaysCard from '../components/SupplementalEssaysCard';

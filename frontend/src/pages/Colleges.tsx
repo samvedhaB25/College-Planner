@@ -5,7 +5,7 @@ import {
     safetyColleges,
     targetColleges,
     reachColleges
-} from "../data";
+} from "../data/data";
 
 export default function Colleges() {
     return(

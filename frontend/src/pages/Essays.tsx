@@ -2,7 +2,7 @@ import Navbar from '../components/Navbar';
 import PersonalStatementCard from '../components/Essays/PersonalStatementCard';
 import SupplementalCard from '../components/Essays/SupplementalCard';
 
-import { allColleges, essays } from '../data';
+import { allColleges, essays } from '../data/data';
 
 export default function Essays() {
     return (

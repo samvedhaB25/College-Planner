@@ -1,4 +1,4 @@
-import type { College, Essay } from "../../data";
+import type { College, Essay } from "../../data/data";
 
 interface CollegeEssayCardProps {
     college: College;

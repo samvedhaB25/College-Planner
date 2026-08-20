@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import type { College } from "../data";
+import type { College } from "../data/data";
 
 type CollegeCardProps = {
     category: string;

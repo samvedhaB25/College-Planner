@@ -1,5 +1,5 @@
 import CollegeEssayCard from "./CollegeEssayCard";
-import type { College, Essay } from "../../data";
+import type { College, Essay } from "../../data/data";
 
 interface SupplementalCardProps {
     colleges: College[];
