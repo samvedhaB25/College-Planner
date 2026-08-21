@@ -8,6 +8,7 @@ import Colleges from './pages/Colleges'
 import CollegePage from './pages/CollegePage'
 import Essays from './pages/Essays'
 import Login from './pages/Login'
+import UploadTranscript from './pages/UploadTranscript'
 import { AuthProvider } from './context/AuthContext'
 import './App.css'
 
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/colleges" element={<Colleges />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/upload-transcript" element={<UploadTranscript />} />
         <Route path="/colleges/:id" element={<CollegePage />} />
         <Route path="/essays" element={<Essays />} />
       </Routes>
