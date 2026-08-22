@@ -15,17 +15,29 @@ export default function Navbar() {
 
             <ul className="flex space-x-6 text-white"
                 style={{ fontFamily: "Poppins, sans-serif" }}>
+                {user && (
+                    <>
+                        <li className="hover:text-green-600">
+                            <Link to="/colleges">Colleges</Link>
+                        </li>
+                        <li className="hover:text-green-600">
+                            <Link to="/essays">Essays</Link>
+                        </li>
+                        <li className="hover:text-green-600">
+                            <Link to="/calendar">Calendar</Link>
+                        </li>
+                    </>
+                )}
                 <li className="hover:text-green-600">
                     <Link to="/features">Features</Link>
                 </li>
                 <li className="hover:text-green-600">
                     <Link to="/about">About</Link>
                 </li>
-                
             </ul>
 
             {loading ? (
-                <div className="w-24" /> // placeholder to avoid layout shift
+                <div className="w-24" />
             ) : user ? (
                 <span
                     className="text-white px-4 py-2"
@@ -42,7 +54,6 @@ export default function Navbar() {
                     Login/Sign-up
                 </button>
             )}
-
         </nav>
     );
 }
