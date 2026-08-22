@@ -15,6 +15,8 @@ public class TranscriptService {
     private final Map<String, TranscriptJob> jobs = new ConcurrentHashMap<>();
 
     public String startProcessing(String userId, MultipartFile file) {
+        System.out.println("startProcessing called on thread: " + Thread.currentThread().getName());
+
         String jobId = UUID.randomUUID().toString();
         TranscriptJob job = new TranscriptJob(jobId, userId);
         jobs.put(jobId, job);
@@ -34,6 +36,8 @@ public class TranscriptService {
 
     @Async
     public void processAsync(TranscriptJob job, byte[] fileBytes) {
+        System.out.println("processAsync running on thread: " + Thread.currentThread().getName());
+        
         job.setStatus("PROCESSING");
         try {
             // TODO: extract text from PDF (e.g. Apache PDFBox)
