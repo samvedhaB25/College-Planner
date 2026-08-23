@@ -13,6 +13,11 @@ public class TranscriptService {
 
     // In-memory for now - swap for a real DB table once this is proven out
     private final Map<String, TranscriptJob> jobs = new ConcurrentHashMap<>();
+    private final UserProfileService userProfileService;
+
+    public TranscriptService(UserProfileService userProfileService) {
+        this.userProfileService = userProfileService;
+    }
 
     public String startProcessing(String userId, MultipartFile file) {
         System.out.println("startProcessing called on thread: " + Thread.currentThread().getName());
@@ -36,8 +41,8 @@ public class TranscriptService {
 
     @Async
     public void processAsync(TranscriptJob job, byte[] fileBytes) {
-        System.out.println("processAsync running on thread: " + Thread.currentThread().getName());
-        
+        // System.out.println("processAsync running on thread: " + Thread.currentThread().getName());
+
         job.setStatus("PROCESSING");
         try {
             // TODO: extract text from PDF (e.g. Apache PDFBox)
@@ -47,6 +52,7 @@ public class TranscriptService {
             Thread.sleep(3000); // placeholder for real processing time
 
             job.setStatus("COMPLETE");
+            userProfileService.markOnboardingComplete(job.getUserId());
         } catch (Exception e) {
             job.setStatus("FAILED");
             job.setErrorMessage(e.getMessage());

@@ -14,6 +14,12 @@ import java.util.Map;
 @RequestMapping("/api/user")
 public class UserController {
 
+    private final UserProfileService userProfileService;
+
+    public UserController(UserProfileService userProfileService) {
+        this.userProfileService = userProfileService;
+    }
+
     @GetMapping("/me")
 public ResponseEntity<?> getCurrentUser(@AuthenticationPrincipal OAuth2User principal) {
     if (principal == null) {
@@ -26,8 +32,12 @@ public ResponseEntity<?> getCurrentUser(@AuthenticationPrincipal OAuth2User prin
     if (displayName == null) {
         displayName = principal.getAttribute("email");
     }
+
+    String email = principal.getAttribute("email");
+
     userInfo.put("username", displayName);
-    userInfo.put("email", principal.getAttribute("email"));
+    userInfo.put("email", email);
+    userInfo.put("onboardingComplete", userProfileService.hasCompletedOnboarding(email));
 
     return ResponseEntity.ok(userInfo);
 }
