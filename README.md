@@ -18,13 +18,20 @@ Database:
 Cloud:
 - AWS
 
+AI Model:
+- OpenAI (GPT) OR
+- Claude
+
 ## Current Progress
 - [x] React setup
 - [x] Project structure
-- [] Homepage
-- [] Authentication
-- [] College Tracker
-- [] Essay Manager
-- [] Task Manager (planned)
-- [] Cloud Deployment
+- [x] Homepage
+- [x] Authentication
+- [x] College Tracker
+- [x] Essay Manager
+- [ ] Task Manager (planned)
+- [x] Upload Transcript
+- [x] Transcript Text Extraction (Apache PDFBox)
+- [ ] AI College Suggestions
+- [ ] Cloud Deployment
 
