@@ -5,6 +5,7 @@ public class TranscriptJob {
     private String userId;
     private String status; // PENDING, PROCESSING, COMPLETE, FAILED
     private String errorMessage;
+    private String extractedText;
 
     public TranscriptJob(String jobId, String userId) {
         this.jobId = jobId;
@@ -18,4 +19,6 @@ public class TranscriptJob {
     public void setStatus(String status) { this.status = status; }
     public String getErrorMessage() { return errorMessage; }
     public void setErrorMessage(String errorMessage) { this.errorMessage = errorMessage; }
+    public String getExtractedText() { return extractedText; }
+    public void setExtractedText(String extractedText) { this.extractedText = extractedText; }
 }

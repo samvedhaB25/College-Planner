@@ -1,5 +1,8 @@
 package com.collegeplanner.college_planner_backend;
 
+import org.apache.pdfbox.Loader;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -45,17 +48,34 @@ public class TranscriptService {
 
         job.setStatus("PROCESSING");
         try {
-            // TODO: extract text from PDF (e.g. Apache PDFBox)
+            // extract text from PDF (e.g. Apache PDFBox)
+            String text = extractText(fileBytes);
+
+            if (text == null || text.isBlank()) {
+                job.setStatus("FAILED");
+                job.setErrorMessage("Could not extract any text from this PDF. It may be a scanned image rather than text-based.");
+                return;
+            }
+
+            job.setExtractedText(text);
+
             // TODO: call AI model to generate college suggestions
             // TODO: save results tied to job.getUserId()
 
-            Thread.sleep(3000); // placeholder for real processing time
+            // Thread.sleep(3000); // placeholder for real processing time
 
             job.setStatus("COMPLETE");
             userProfileService.markOnboardingComplete(job.getUserId());
         } catch (Exception e) {
             job.setStatus("FAILED");
             job.setErrorMessage(e.getMessage());
+        }
+    }
+
+    private String extractText(byte[] fileBytes) throws Exception {
+        try (PDDocument document = Loader.loadPDF(fileBytes)) {
+            PDFTextStripper stripper = new PDFTextStripper();
+            return stripper.getText(document);
         }
     }
 

@@ -4,6 +4,11 @@ import Navbar from '../components/Navbar';
 
 type UploadState = 'idle' | 'uploading' | 'processing' | 'error';
 
+function getCookie(name: string): string | null {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? decodeURIComponent(match[2]) : null;
+}
+
 export default function UploadTranscript() {
     const navigate = useNavigate();
     const [file, setFile] = useState<File | null>(null);
@@ -68,9 +73,14 @@ async function handleUpload() {
     formData.append('transcript', file);
 
     try {
+        const csrfToken = getCookie('XSRF-TOKEN');
+
         const res = await fetch('http://localhost:8080/api/transcript/upload', {
             method: 'POST',
             credentials: 'include',
+            headers: {
+                'X-XSRF-TOKEN': csrfToken ?? '',
+            },
             body: formData,
         });
 
