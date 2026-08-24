@@ -75,6 +75,11 @@ public class TranscriptService {
     private String extractText(byte[] fileBytes) throws Exception {
         try (PDDocument document = Loader.loadPDF(fileBytes)) {
             PDFTextStripper stripper = new PDFTextStripper();
+            
+            // The following two lines print the contents of the uploaded PDF
+            // String text = stripper.getText(document);
+            // System.out.println("=== EXTRACTED TEXT ===\n" + text);
+            
             return stripper.getText(document);
         }
     }

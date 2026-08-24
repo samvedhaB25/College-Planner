@@ -20,14 +20,14 @@ public class TranscriptController {
     }
 
     // Remove before final version
-    @GetMapping("/debug/{jobId}")
-    public ResponseEntity<String> debugExtractedText(@PathVariable String jobId) {
-        TranscriptJob job = transcriptService.getJob(jobId);
-        if (job == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(job.getExtractedText());
-    }
+    // @GetMapping("/debug/{jobId}")
+    // public ResponseEntity<String> debugExtractedText(@PathVariable String jobId) {
+    //     TranscriptJob job = transcriptService.getJob(jobId);
+    //     if (job == null) {
+    //         return ResponseEntity.notFound().build();
+    //     }
+    //     return ResponseEntity.ok(job.getExtractedText());
+    // }
 
     @PostMapping("/upload")
     public ResponseEntity<?> uploadTranscript(
