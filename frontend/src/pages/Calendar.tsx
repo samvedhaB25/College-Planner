@@ -4,8 +4,15 @@ import Navbar from '../components/Navbar';
 import CalendarHeader from '../components/Calendar/CalendarHeader';
 import CalendarGrid from '../components/Calendar/CalendarGrid';
 
+export type Task = {
+    id: number;
+    date: string; // format: "YYYY-MM-DD"
+    title: string;
+};
+
 export default function Calendar() {
     const [currentDate, setCurrentDate] = useState(new Date());
+    const [tasks, setTasks] = useState<Task[]>([]);
 
     const monthName = currentDate.toLocaleString("default", {
         month: "long",
@@ -31,6 +38,13 @@ export default function Calendar() {
         );
     };
 
+    function addTask(date: string, title: string) {
+        setTasks((prev) => [
+            ...prev,
+            { id: Date.now(), date, title },
+        ]);
+    }
+
     return (
         <div>
             <Navbar />
@@ -47,7 +61,11 @@ export default function Calendar() {
                     nextMonth={nextMonth}
                 />
 
-                <CalendarGrid currentDate={currentDate}/>
+                <CalendarGrid
+                    currentDate={currentDate}
+                    tasks={tasks}
+                    onAddTask={addTask}
+                />
 
             </div>
 

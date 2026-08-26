@@ -3,6 +3,7 @@ package com.collegeplanner.college_planner_backend;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,6 +18,9 @@ public class TranscriptService {
     // In-memory for now - swap for a real DB table once this is proven out
     private final Map<String, TranscriptJob> jobs = new ConcurrentHashMap<>();
     private final UserProfileService userProfileService;
+
+    @Value("${gemini.api.key}")
+    private String geminiApiKey;
 
     public TranscriptService(UserProfileService userProfileService) {
         this.userProfileService = userProfileService;

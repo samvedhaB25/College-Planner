@@ -1,11 +1,16 @@
 import CalendarCell from "./CalendarCell";
+import type { Task } from "../../pages/Calendar";
 
 interface CalendarGridProps {
     currentDate: Date;
+    tasks: Task[];
+    onAddTask: (date: string, title: string) => void;
 }
 
 export default function CalendarGrid({
     currentDate,
+    tasks,
+    onAddTask,
 }: CalendarGridProps) {
     const weekdays = [
         "Sun",
@@ -20,7 +25,6 @@ export default function CalendarGrid({
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
 
-    // JavaScript trick to calculating the number of days in a month.
     const daysInMonth = new Date(
         year,
         month + 1,
@@ -47,6 +51,12 @@ export default function CalendarGrid({
         days.push(null);
     }
 
+    function dateKey(day: number) {
+        const mm = String(month + 1).padStart(2, "0");
+        const dd = String(day).padStart(2, "0");
+        return `${year}-${mm}-${dd}`;
+    }
+
     return (
         <div>
             <div className="grid grid-cols-7 gap-2 mb-2">
@@ -70,6 +80,8 @@ export default function CalendarGrid({
                     <CalendarCell
                         key={index}
                         day={day}
+                        tasks={day ? tasks.filter((t) => t.date === dateKey(day)) : []}
+                        onAddTask={day ? (title) => onAddTask(dateKey(day), title) : undefined}
                     />
 
                 ))}
@@ -79,4 +91,3 @@ export default function CalendarGrid({
         </div>
     );
 }
-

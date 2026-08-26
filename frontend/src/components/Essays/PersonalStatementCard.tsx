@@ -1,4 +1,16 @@
+import { useState } from 'react';
+
 export default function PersonalStatementCard() {
+    const [docUrl, setDocUrl] = useState('');
+
+    function openDoc() {
+        if (docUrl) {
+            window.open(docUrl, '_blank');
+        } else {
+            window.open('https://docs.google.com/document/create', '_blank');
+        }
+    }
+
     return (
         <div>
             <div className="bg-white rounded-2xl shadow-md p-6">
@@ -56,11 +68,25 @@ export default function PersonalStatementCard() {
 
                     </div>
 
-                    <button className="w-full bg-sky-200 text-gray py-3 rounded-lg hover:bg-blue-700 transition">
-                        Open Google Doc
-                    </button>
+                    <div className="mb-3">
+                        <p className="text-sm text-gray-500 mb-1">
+                            Google Doc Link
+                        </p>
+                        <input
+                            type="text"
+                            value={docUrl}
+                            onChange={(e) => setDocUrl(e.target.value)}
+                            placeholder="Paste your Google Doc link here"
+                            className="w-full border rounded-lg px-3 py-2 text-sm"
+                        />
+                    </div>
 
-                    
+                    <button
+                        onClick={openDoc}
+                        className="w-full bg-sky-200 text-gray py-3 rounded-lg hover:bg-blue-700 transition"
+                    >
+                        {docUrl ? 'Open Google Doc' : 'Create New Google Doc'}
+                    </button>
 
                 </div>
 
