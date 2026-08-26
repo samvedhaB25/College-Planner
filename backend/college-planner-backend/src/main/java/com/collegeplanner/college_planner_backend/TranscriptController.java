@@ -65,6 +65,9 @@ public class TranscriptController {
         if ("FAILED".equals(job.getStatus())) {
             response.put("error", job.getErrorMessage());
         }
+        if ("COMPLETE".equals(job.getStatus())) {
+            response.put("collegeSuggestions", job.getCollegeSuggestions());
+        }
         return ResponseEntity.ok(response);
     }
 }

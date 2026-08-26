@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { safetyColleges, targetColleges, reachColleges } from "../data/data";
+import { getAllColleges } from "../data/collegeStore";
 
 import Navbar from '../components/Navbar';
 import SupplementalEssaysCard from '../components/SupplementalEssaysCard';
@@ -9,11 +9,7 @@ import OtherInfoCard from '../components/OtherInfoCard'
 export default function CollegePage() {
     const { id } = useParams();
 
-    const colleges = [
-        ...safetyColleges,
-        ...targetColleges,
-        ...reachColleges
-    ];
+    const colleges = getAllColleges();
 
     const college = colleges.find(
         (college) => college.id === Number(id)

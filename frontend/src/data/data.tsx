@@ -8,6 +8,7 @@ export type College = {
     acceptRate: string;
     iSAcceptRate: string;
     oSAcceptRate: string;
+    reasoning?: string;
 };
 
 export const safetyColleges: College[] = [

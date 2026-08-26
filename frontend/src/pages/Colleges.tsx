@@ -1,13 +1,10 @@
 import Navbar from '../components/Navbar';
 import CollegeCard from '../components/CollegeCard';
-
-import {
-    safetyColleges,
-    targetColleges,
-    reachColleges
-} from "../data/data";
+import { getCollegesByCategory } from '../data/collegeStore';
 
 export default function Colleges() {
+    const { safetyColleges, targetColleges, reachColleges } = getCollegesByCategory();
+
     return(
         <div>
             <Navbar />
@@ -31,8 +28,5 @@ export default function Colleges() {
             </div>
 
         </div>
-
-
     );
-
 }

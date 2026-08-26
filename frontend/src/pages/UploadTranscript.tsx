@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { saveCollegeSuggestions } from '../data/collegeStore';
 import Navbar from '../components/Navbar';
 
 type UploadState = 'idle' | 'uploading' | 'processing' | 'error';
@@ -50,7 +51,10 @@ export default function UploadTranscript() {
 
             if (data.status === 'COMPLETE') {
                 clearInterval(poll);
-                navigate('/dashboard');
+                if (data.collegeSuggestions) {
+                    saveCollegeSuggestions(data.collegeSuggestions);
+                }
+                navigate('/colleges');
             } else if (data.status === 'FAILED') {
                 clearInterval(poll);
                 setErrorMsg('Something went wrong processing your transcript. Please try again.');
